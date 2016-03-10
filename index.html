@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic jQuery Todolist</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+     <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
+     <link rel="stylesheet" type="text/css"  href="./css/font-awesome.min.css">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <!--sweet alert-->
+    <script src="./js/sweetalert.min.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <style media="screen">
+   /*this line make p tag to change line when to many description */
+      p {
+          word-wrap:break-word
+        }
+  </style>
+  <body>
+      <div class="container">
+        <div class="row">
+          <div class="card-panel grey lighten-5 col s12 m12 l6" style="padding:30px;">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1" >TodoList Description</label>
+                </div>
+              </div>
+            </form>
+            <button class="btn waves-effect waves-light" id="submit">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <div class="col s12 m12 l6" id="showlist">
+
+          </div>
+        </div>
+      </div>
+
+
+      <script type="text/javascript">
+      var counter = 0;
+
+      $( "#submit" ).click(function() {
+        //add counter
+        console.log(counter);
+        if( $("#textarea1").val()){
+          //show todo list card on the right
+          $( "#showlist" ).append(
+              $('<div/>', {'class': 'card teal lighten-5'}).append(
+                  $('<div/>', {'class': 'card-content'}).append(
+                    $('<div/>', {'class': 'right'}).append(
+                      $('<a/>',{'class':'btn-floating waves-effect waves-light orange accent-2'}).append(
+                          $('<i/>', {'class': 'fa fa-times'}).attr('id', ++counter)  //add unique id to delete btn
+                      )
+                    )
+                  ).append(
+                    $('<br/>')
+                  ).append(
+                    $('<div/>',{'class':'card-panel'}).append(
+                          $('<p/>', {'class':'flow-text',text:$('#textarea1').val()}).attr('id','currenttext'+counter)
+                    )
+                  )
+              ).append(
+                  $('<div/>', {'class': 'card-action'}).append( //edit btn
+                      $('<a/>', {'class': 'btn-floating waves-effect waves-light btn modal-trigger'}).append(
+                          $('<i/>', {'class': 'fa fa-pencil-square-o','id':counter})
+                      ).attr('href','#modal'+counter)
+                  )
+              ).attr('id', 'num_' + counter)
+          //----------------------------------
+          ).append( //append each card with its own model
+            $('<div/>', {'class': 'modal','id': "modal" + counter}).append(
+              $('<div/>', {'class': 'modal-content'}).append(
+                  $('<h4/>',{text:'Edit Your Todolist'})
+               ).append(
+                  $('<textarea/>',{'class':'materialize-textarea',text:$('#currenttext'+counter).text()}).attr('id','editarea'+counter)
+                ).append(
+                   $('<a/>',{'class':'waves-effect waves-light btn editbtn',text:'edit'}).attr('id',counter)
+                 )
+             )
+          );
+
+        //clear current textarea value
+          $('#textarea1').val('');
+        }
+        else {
+          swal({
+            title: "Add Your Todolist!",
+            text: "Description Area Cannot be Empty",
+            type: "error",
+            confirmButtonText: "Get that !"
+          });
+        }
+      });
+
+      //delete current click card
+      $(document).on('click','.fa-times',function(){
+        $("#num_"+this.id).remove();
+      });
+
+      //edit current click card (show edit modal)
+      $(document).on('click','.fa-pencil-square-o',function(){
+          console.log('open modal success'+this.id);
+          $('#editarea'+this.id).val($('#currenttext'+this.id).text());
+          $('#modal'+this.id).openModal();
+      });
+
+      //edit function after click edit function
+      $(document).on('click','.editbtn',function(){
+        $('#currenttext' + this.id).text($('#editarea' + this.id).val());
+        $('#editarea' + this.id).val('');
+        $('#modal'+this.id).closeModal();
+        console.log('edit success'+ this.id);
+      });
+
+
+      $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+      });
+
+      </script>
+  </body>
+</html>
