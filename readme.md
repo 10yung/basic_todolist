@@ -1,6 +1,6 @@
 #Basic jQuery TodoList
 ------
-##Todolist with jQuery, Materlize framework, Sweet alert and font-awesome
+######Todolist with jQuery, Materlize framework, Sweet alert and font-awesome
 
 ###Learning Path
 This side project is used to practice jQusery Syntax and function. So  I use jQuery to manipulate DOM.
