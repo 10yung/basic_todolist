@@ -9,11 +9,14 @@ In this todolist you can **ADD LIST**, **DELETE LIST**, **EDIT LIST**.
 I use jQuery to add DOM, delete DOM and get the DOM you choose so you can edit.
 
 1. **ADD DOM**
-⋅⋅⋅when you click submit button, jQuery get the text in textarea, combine with Materlize card component and add all the HTML tag to ⋅⋅⋅browser.
+
+When you click submit button, jQuery get the text in textarea, combine with Materlize card component and add all the HTML tag to browser.
 2. **DELETE DOM**
-⋅⋅⋅when you click delete button, jQuery just delete the DOM that you click and the child DOM inside it.
+
+When you click delete button, jQuery just delete the DOM that you click and the child DOM inside it.
 3. **EDIT DOM**
-⋅⋅⋅when you click edit button, Materlize popup a Modal. After you change the text jQuery just replace the text inside the DOM.
+
+When you click edit button, Materlize popup a Modal. After you change the text jQuery just replace the text inside the DOM.
 
 ###Tricky
 Why jQuery know the current list that you click?
@@ -26,3 +29,15 @@ only use ``this`` keyword to get the button you click.
 I don't know if there are better way to implement this feature.
 
 If you have better solution, feel free to email me !
+
+###Others Package
+
+[materializecss][materializecss]
+
+[sweetalert][sweetalert]
+
+[Font-Awesome][Font-Awesome]
+
+[materializecss]: http://materializecss.com/
+[sweetalert]:   http://t4t5.github.io/sweetalert/
+[Font-Awesome]: https://fortawesome.github.io/Font-Awesome/
