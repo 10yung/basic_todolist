@@ -32,14 +32,17 @@ I don't know if there are better way to implement this feature.
 
 If you have better solution, feel free to email me !
 
-###Others Package
+###Packages
 
-[materializecss][materializecss]
+* [jQuery][jquery]
 
-[sweetalert][sweetalert]
+* [Materialize][materializecss]
 
-[Font-Awesome][Font-Awesome]
+* [Sweetalert][sweetalert]
 
+* [Font-Awesome][Font-Awesome]
+
+[jquery]: https://jquery.com/
 [materializecss]: http://materializecss.com/
 [sweetalert]:   http://t4t5.github.io/sweetalert/
 [Font-Awesome]: https://fortawesome.github.io/Font-Awesome/
